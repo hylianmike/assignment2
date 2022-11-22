@@ -1,0 +1,22 @@
+.root{
+    -fx-font: bold italic 36pt "Arial";
+    -fx-background-image: url("img/background.jpg");
+    -fx-background-position: center;
+}
+
+.darken{
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+.info-label{
+    -fx-font: bold 18pt "Arial";
+}
+
+.button{
+    -fx-font: bold italic 24pt "Arial";
+    -fx-text-fill: black;
+}
