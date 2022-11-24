@@ -45,4 +45,9 @@ public class Attack {
     public void setFighterId(int fighterId) {
         this.fighterId = fighterId;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

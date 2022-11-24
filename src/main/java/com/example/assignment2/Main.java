@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Locale;
 
 public class Main extends Application {
     @Override
@@ -18,7 +20,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        //APIUtility.getGames();
+        System.out.println(Arrays.toString(APIUtility.getGames()));
         launch();
     }
 }

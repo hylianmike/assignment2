@@ -4,14 +4,14 @@ public class Fighter {
 
     private int fighterId;
     private String name;
-    private char gender;
+    private String gender;
     private String playStyle;
     private int skillLevel;
     private String strengths;
     private String weaknesses;
     private int gameId;
 
-    public Fighter(int fighterId, String name, char gender, String playStyle, int skillLevel, String strengths, String weaknesses, int gameId) {
+    public Fighter(int fighterId, String name, String gender, String playStyle, int skillLevel, String strengths, String weaknesses, int gameId) {
         setFighterId(fighterId);
         setName(name);
         setGender(gender);
@@ -38,11 +38,11 @@ public class Fighter {
         this.name = name;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -78,12 +78,16 @@ public class Fighter {
         this.weaknesses = weaknesses;
     }
 
-
     public int getGameId() {
         return gameId;
     }
 
     public void setGameId(int gameId) {
         this.gameId = gameId;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

@@ -1,26 +1,34 @@
 package com.example.assignment2;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class APIUtility {
 
-    public static List<Game> getGames() throws IOException, InterruptedException {
-        String uri = "https://localhost:7092/api/games";
+    public static Game[] getGames() throws IOException, InterruptedException {
+        String uri = "https://fighterstatsnet.azurewebsites.net/api/games";
 
-        HttpClient client = HttpClient.newHttpClient();
+        HttpClient.newHttpClient().send(HttpRequest.newBuilder().uri(URI.create(uri)).build(), HttpResponse.BodyHandlers.ofFile(Paths.get("jsonData.json")));
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uri)).build();
+        Gson gson = new Gson();
+        Game[] apiResponse = null;
 
-        HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofFile(Paths.get("jsonData.json")));
+        try(JsonReader jsonReader = new JsonReader(new FileReader("jsonData.json"))) {
+            apiResponse = gson.fromJson(jsonReader, Game[].class);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
-        return new ArrayList<>();
+        return apiResponse;
     }
 
 }

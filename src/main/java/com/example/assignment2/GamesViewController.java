@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,11 +27,11 @@ public class GamesViewController implements Initializable {
         yearLabel.setVisible(false);
         seeFightersButton.setVisible(false);
 
-        Game street = new Game(1, "Street Fighter II", 1992);
-        Game gg = new Game(2, "Guilty Gear Strive", 2021);
-        Game dbfz = new Game(3, "Dragon Ball FighterZ", 2018);
-
-        gamesList.getItems().addAll(street, gg, dbfz);
+        try {
+            gamesList.getItems().addAll(APIUtility.getGames());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
         gamesList.getSelectionModel().selectedItemProperty().addListener((list, oldOne, game) -> {
             yearLabel.setVisible(true);
