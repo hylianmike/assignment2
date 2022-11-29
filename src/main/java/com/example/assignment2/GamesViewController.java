@@ -1,5 +1,6 @@
 package com.example.assignment2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -38,5 +39,10 @@ public class GamesViewController implements Initializable {
             yearLabel.setText("Release Year: " + game.getYearOfRelease());
             seeFightersButton.setVisible(true);
         });
+    }
+
+    @FXML
+    private void showFighters(ActionEvent event) throws IOException, InterruptedException {
+        SceneChanger.seeFighters(event, gamesList.getSelectionModel().getSelectedItem().getGameId());
     }
 }

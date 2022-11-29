@@ -1,11 +1,13 @@
 package com.example.assignment2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,14 +34,11 @@ public class FightersViewController implements Initializable {
     @FXML
     private Label weaknessesLabel;
 
+    @FXML
+    private Button backButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Fighter ryu = new Fighter(1, "Ryu", "M", "All-Rounder", 7, null, null, 1);
-        Fighter sol = new Fighter(2, "Sol Badguy", "M", "All-Rounder", 5, null, null, 2);
-        Fighter zangief = new Fighter(3, "Zangeif", "M", "Grappler", 2, null, null, 1);
-
-        fightersList.getItems().addAll(ryu, sol, zangief);
 
         fightersList.getSelectionModel().selectedItemProperty().addListener((list, oldOne, fighter) -> {
             genderLabel.setVisible(true);
@@ -57,5 +56,19 @@ public class FightersViewController implements Initializable {
             seeAttacksButton.setVisible(true);
         });
 
+    }
+
+    @FXML
+    private void showAttacks(ActionEvent event) throws IOException, InterruptedException {
+        SceneChanger.seeAttacks(event, fightersList.getSelectionModel().getSelectedItem().getGameId());
+    }
+
+    @FXML
+    private void backToGames(ActionEvent event) throws IOException {
+        SceneChanger.backToGames(event);
+    }
+
+    public void populateTable(int gameID) throws IOException, InterruptedException {
+        fightersList.getItems().addAll(APIUtility.getFighters(gameID));
     }
 }

@@ -1,10 +1,13 @@
 package com.example.assignment2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,20 +19,25 @@ public class AttacksViewController implements Initializable {
     @FXML
     private Label inputLabel;
 
+    @FXML
+    private Button backButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inputLabel.setVisible(false);
-
-        Attack had = new Attack(1, "Hadouken", "1/4 forward", 1);
-        Attack tatsu = new Attack(2, "Tatsumaki", "1/2 back", 1);
-        Attack totsu = new Attack(3, "Totsugeki", "DP forward", 4);
-
-        attacksList.getItems().addAll(had, tatsu, totsu);
 
         attacksList.getSelectionModel().selectedItemProperty().addListener((list, oldOne, attack) -> {
             inputLabel.setVisible(true);
             inputLabel.setText("Button Input: " + attack.getButtonInput());
         });
+    }
 
+    @FXML
+    private void backToFighters(ActionEvent event) throws IOException, InterruptedException {
+        SceneChanger.seeFighters(event, attacksList.getSelectionModel().getSelectedItem().getFighterId());
+    }
+
+    public void populateTable(int fighterID) throws IOException, InterruptedException {
+        attacksList.getItems().addAll(APIUtility.getAttacks(fighterID));
     }
 }
