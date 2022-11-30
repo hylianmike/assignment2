@@ -19,7 +19,10 @@ public class Attack {
     }
 
     public void setAttackId(int attackId) {
-        this.attackId = attackId;
+        if (attackId > 0)
+            this.attackId = attackId;
+        else
+            throw new IllegalArgumentException("Fighter ID must be greater than 0");
     }
 
     public String getName() {
@@ -27,7 +30,10 @@ public class Attack {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length() > 0)
+            this.name = name;
+        else
+            throw new IllegalArgumentException("Name of attack must be at least one character long.");
     }
 
     public String getButtonInput() {
@@ -35,7 +41,10 @@ public class Attack {
     }
 
     public void setButtonInput(String buttonInput) {
-        this.buttonInput = buttonInput;
+        if (buttonInput.length() > 0)
+            this.buttonInput = buttonInput;
+        else
+            throw new IllegalArgumentException("Button input must be at least one character long.");
     }
 
     public int getFighterId() {
@@ -43,7 +52,10 @@ public class Attack {
     }
 
     public void setFighterId(int fighterId) {
-        this.fighterId = fighterId;
+        if (fighterId > 0)
+            this.fighterId = fighterId;
+        else
+            throw new IllegalArgumentException("Fighter ID must be greater than 0");
     }
 
     @Override

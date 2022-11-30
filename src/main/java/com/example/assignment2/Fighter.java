@@ -27,7 +27,10 @@ public class Fighter {
     }
 
     public void setFighterId(int fighterId) {
-        this.fighterId = fighterId;
+        if (fighterId > 0)
+            this.fighterId = fighterId;
+        else
+            throw new IllegalArgumentException("Fighter ID must be greater than 0");
     }
 
     public String getName() {
@@ -35,7 +38,10 @@ public class Fighter {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length() > 0)
+            this.name = name;
+        else
+            throw new IllegalArgumentException("Name of fighter must be at least one character long.");
     }
 
     public String getGender() {
@@ -43,7 +49,10 @@ public class Fighter {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        if (gender.equals("M") || gender.equals("F") || gender.equals("B"))
+            this.gender = gender;
+        else
+            throw new IllegalArgumentException("Gender can oly be M, F or B");
     }
 
     public String getPlayStyle() {
@@ -51,7 +60,10 @@ public class Fighter {
     }
 
     public void setPlayStyle(String playStyle) {
-        this.playStyle = playStyle;
+        if (playStyle.length() > 0)
+            this.playStyle = playStyle;
+        else
+            throw new IllegalArgumentException("Name of playStyle must be at least one character long.");
     }
 
     public int getSkillLevel() {
@@ -59,7 +71,10 @@ public class Fighter {
     }
 
     public void setSkillLevel(int skillLevel) {
-        this.skillLevel = skillLevel;
+        if (skillLevel >= 0 && skillLevel <= 10)
+            this.skillLevel = skillLevel;
+        else
+            throw new IllegalArgumentException("Skill level must be between 0 and 10");
     }
 
     public String getStrengths() {
@@ -67,7 +82,10 @@ public class Fighter {
     }
 
     public void setStrengths(String strengths) {
-        this.strengths = strengths;
+        if (strengths == null || strengths.length() > 5)
+            this.strengths = strengths;
+        else
+            throw new IllegalArgumentException("This fighter's strengths must be at least 5 characters long.");
     }
 
     public String getWeaknesses() {
@@ -75,7 +93,10 @@ public class Fighter {
     }
 
     public void setWeaknesses(String weaknesses) {
-        this.weaknesses = weaknesses;
+        if (weaknesses == null || weaknesses.length() > 5)
+            this.weaknesses = weaknesses;
+        else
+            throw new IllegalArgumentException("This fighter's weaknesses must be at least 5 characters long.");
     }
 
     public int getGameId() {
@@ -83,7 +104,10 @@ public class Fighter {
     }
 
     public void setGameId(int gameId) {
-        this.gameId = gameId;
+        if (gameId > 0)
+            this.gameId = gameId;
+        else
+            throw new IllegalArgumentException("Game ID must be greater than 0");
     }
 
     @Override

@@ -17,7 +17,10 @@ public class Game {
     }
 
     public void setGameId(int gameId) {
-        this.gameId = gameId;
+        if (gameId > 0)
+            this.gameId = gameId;
+        else
+            throw new IllegalArgumentException("Game ID must be greater than 0");
     }
 
     public String getName() {
@@ -25,7 +28,10 @@ public class Game {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length() > 0)
+            this.name = name;
+        else
+            throw new IllegalArgumentException("Name of game must be at least 1 character long.");
     }
 
     public int getYearOfRelease() {
@@ -33,7 +39,10 @@ public class Game {
     }
 
     public void setYearOfRelease(int yearOfRelease) {
-        this.yearOfRelease = yearOfRelease;
+        if (yearOfRelease >= 1958)
+            this.yearOfRelease = yearOfRelease;
+        else
+            throw new IllegalArgumentException("Everyone knows that the first video game came out in 1958, so there's n way the release year could be before that.");
     }
 
     @Override
