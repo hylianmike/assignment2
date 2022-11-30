@@ -22,6 +22,8 @@ public class AttacksViewController implements Initializable {
     @FXML
     private Button backButton;
 
+    private int gameID;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inputLabel.setVisible(false);
@@ -34,10 +36,11 @@ public class AttacksViewController implements Initializable {
 
     @FXML
     private void backToFighters(ActionEvent event) throws IOException, InterruptedException {
-        SceneChanger.seeFighters(event, attacksList.getSelectionModel().getSelectedItem().getFighterId());
+        SceneChanger.seeFighters(event, gameID);
     }
 
-    public void populateTable(int fighterID) throws IOException, InterruptedException {
+    public void populateTable(int gameID, int fighterID) throws IOException, InterruptedException {
         attacksList.getItems().addAll(APIUtility.getAttacks(fighterID));
+        this.gameID = gameID;
     }
 }

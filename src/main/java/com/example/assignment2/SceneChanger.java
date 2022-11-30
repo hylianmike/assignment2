@@ -20,11 +20,11 @@ public class SceneChanger {
         stage.show();
     }
 
-    public static void seeAttacks(ActionEvent event, int id) throws IOException, InterruptedException {
+    public static void seeAttacks(ActionEvent event, int game, int fighter) throws IOException, InterruptedException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("attacks-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         AttacksViewController controller = fxmlLoader.getController();
-        controller.populateTable(id);
+        controller.populateTable(game, fighter);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();

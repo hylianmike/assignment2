@@ -49,8 +49,8 @@ public class FightersViewController implements Initializable {
 
             genderLabel.setText("Gender: " + fighter.getGender());
             playStyleLabel.setText("PlayStyle: " + fighter.getPlayStyle());
-            strengthsLabel.setText("Strengths: " + (fighter.getStrengths() == null ? "None" : fighter.getStrengths()));
-            weaknessesLabel.setText("Weaknesses: " + (fighter.getWeaknesses() == null ? "None" : fighter.getWeaknesses()));
+            strengthsLabel.setText("STRNGS: " + (fighter.getStrengths() == null ? "None" : fighter.getStrengths()));
+            weaknessesLabel.setText("WKNSS: " + (fighter.getWeaknesses() == null ? "None" : fighter.getWeaknesses()));
             skillLevelLabel.setText("Skill Level: " + fighter.getSkillLevel() + "/10");
 
             seeAttacksButton.setVisible(true);
@@ -60,7 +60,7 @@ public class FightersViewController implements Initializable {
 
     @FXML
     private void showAttacks(ActionEvent event) throws IOException, InterruptedException {
-        SceneChanger.seeAttacks(event, fightersList.getSelectionModel().getSelectedItem().getGameId());
+        SceneChanger.seeAttacks(event, fightersList.getSelectionModel().getSelectedItem().getGameId(), fightersList.getSelectionModel().getSelectedItem().getFighterId());
     }
 
     @FXML
