@@ -20,9 +20,10 @@
                 <Label fx:id="inputLabel" styleClass="info-label" text="Label" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToFighters" text="Back To Fighters">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="backToGamesButton" mnemonicParsing="false" onAction="#backToGames" text="Back To All Games" />
             </children>
         </VBox>
     </children>

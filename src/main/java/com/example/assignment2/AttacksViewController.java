@@ -22,6 +22,9 @@ public class AttacksViewController implements Initializable {
     @FXML
     private Button backButton;
 
+    @FXML
+    private Button backToGamesButton;
+
     private int gameID;
 
     @Override
@@ -37,6 +40,11 @@ public class AttacksViewController implements Initializable {
     @FXML
     private void backToFighters(ActionEvent event) throws IOException, InterruptedException {
         SceneChanger.seeFighters(event, gameID);
+    }
+
+    @FXML
+    private void backToGames(ActionEvent event) throws IOException {
+        SceneChanger.backToGames(event);
     }
 
     public void populateTable(int gameID, int fighterID) throws IOException, InterruptedException {
